@@ -1,25 +1,12 @@
-# Nome do workflow que aparecerá na aba "Actions" do GitHub
+# .github/workflows/frontend-ci.yml
+
 name: CI do Frontend Next.js
 
-# Define quando este workflow será acionado
 on:
   push:
-    branches:
-      - main # Em pushes para o branch 'main'
-      - develop # E para o branch 'develop' (se você usar)
-    # Se estiver em um MONOREPO e esta CI for para a pasta 'frontend/',
-    # você pode adicionar um filtro de caminho para rodar apenas quando arquivos do frontend mudarem:
-    # paths:
-    #   - 'frontend/**'
-    #   - '.github/workflows/frontend-ci.yml' # Ou se o próprio workflow mudar
+    branches: [ main, develop ]
   pull_request:
-    branches:
-      - main # Em PRs direcionados ao 'main'
-      - develop # E para PRs direcionados ao 'develop'
-    # Se estiver em um MONOREPO:
-    # paths:
-    #   - 'frontend/**'
-    #   - '.github/workflows/frontend-ci.yml'
+    branches: [ main, develop ]
 
 jobs:
   build_and_test_frontend:
@@ -48,4 +35,3 @@ jobs:
 
       - name: 5. Construir Projeto (Build)
         run: npm run build
-          ${{ secrets.STAGING_API_URL }}

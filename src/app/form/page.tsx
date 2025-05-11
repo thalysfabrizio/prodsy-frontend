@@ -43,13 +43,11 @@ export default function ExampleFormPage() {
     },
   });
 
-  function onSubmit(values: FormValues) {
-    // Faça algo com os dados do formulário.
-    // Ex: enviar para o backend.
-    console.log(values);
-    alert(`Dados enviados: ${JSON.stringify(values, null, 2)}`);
-    form.reset(); // Limpa o formulário após o envio
-  }
+function onSubmit(values: FormValues) {
+  console.log(JSON.stringify(values));
+  alert(`Dados enviados: ${JSON.stringify(values, null, 2)}`);
+  form.reset();
+}
 
   return (
     <div className="container mx-auto p-4 max-w-md">
